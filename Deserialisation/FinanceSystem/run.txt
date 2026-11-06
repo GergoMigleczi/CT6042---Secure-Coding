@@ -3,8 +3,6 @@
 mvn exec:java -Dexec.mainClass=InvoiceService
 
 
-NVD API Key:  D10B2C0B-63EC-4293-8681-BCE4535098A3
-
 
 dependency check:
 mvn org.owasp:dependency-check-maven:13.0.0:check -DnvdApiKeyEnvironmentVariable=NVD_API_KEY
