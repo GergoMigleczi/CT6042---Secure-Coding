@@ -1,0 +1,10 @@
+
+# PURPOSE:
+# Define the approved dispatch-label dependency for the Order System.
+#
+# SECURITY CONTEXT:
+# Pin the reviewed package version and verify its SHA-256 hash.
+# Only approved local wheel files may be used during installation.
+
+dispatch-label-generator==1.0.0 \
+    --hash=sha256:ded7b0003a843b9d42767b948d9fc4e078a95109d4dea3dbb141fa602bbbceb1

@@ -1,0 +1,14 @@
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dispatch-label-generator"
+version = "1.0.0"
+description = "Third-party dispatch label generator for the Order Processing System"
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["dispatch_labels*"]

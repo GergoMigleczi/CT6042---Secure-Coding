@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: dispatch-label-generator
+Version: 1.0.1
+Summary: Third-party dispatch label generator for the Order Processing System
+Requires-Python: >=3.9

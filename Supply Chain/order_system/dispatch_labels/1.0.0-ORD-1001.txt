@@ -1,0 +1,6 @@
+DISPATCH LABEL
+------------------------------
+Order: ORD-1001
+Customer: Alice Smith
+Deliver To: 123 Example Street, Bristol
+------------------------------

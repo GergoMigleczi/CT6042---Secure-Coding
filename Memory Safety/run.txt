@@ -1,0 +1,41 @@
+# Compile teh three programs
+clang -std=c11 -O0 -g -Wall -Wextra receive_order.c -o receive_order
+clang -std=c11 -O0 -g -Wall -Wextra receive_order_safe.c -o receive_order_safe
+clang -std=c11 -O0 -g -Wall -Wextra generate_label.c -o generate_label
+
+
+# Vulnerable Order Receiver
+./receive_order 1001 "John Lewis"
+./receive_order 1002 "$(python3 -c 'print("A" * 32 + "Y")')"
+
+
+# Mitigated order receiver
+./receive_order_safe 2001 "   John Lewis   "
+./receive_order_safe 2002 "$(python3 -c 'print("A" * 32 + "Y")')"
+
+
+# Shared label generator
+./generate_label
+
+
+DETECT
+
+CLANG STATIC ANALYSER
+# Analyse the vulnerable implementation
+clang --analyze -Wall -Wextra receive_order.c
+
+# Analyse the safe implementation
+clang --analyze -Wall -Wextra receive_order_safe.c
+
+didn't detect anything
+
+ADRESSSANTIEIZER 
+clang -std=c11 -O0 -g -fsanitize=address \
+  -fno-omit-frame-pointer \
+  receive_order.c -o receive_order_asan
+
+gergomigleczi@Gergos-Air Memory Safety % ./receive_order_asan 5001 "$(python3 -c 'print("A" * 32 + "Y")')" 
+Order 5001 saved successfully.
+Ready to ship: Y
+
+didn't detect anything 

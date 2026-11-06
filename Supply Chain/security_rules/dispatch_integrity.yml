@@ -1,0 +1,15 @@
+
+rules:
+  - id: suspicious-dispatch-address-override
+    languages:
+      - python
+    severity: ERROR
+    message: >
+      A fixed delivery address is assigned inside the dispatch-label
+      generator. Review for unauthorised address substitution.
+    patterns:
+      - pattern-inside: |
+          def generate_label(...):
+              ...
+      - pattern: |
+          delivery_address = "..."

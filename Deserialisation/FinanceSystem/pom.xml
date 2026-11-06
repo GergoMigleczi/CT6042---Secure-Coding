@@ -1,0 +1,65 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+PURPOSE:
+Configures the Java deserialisation security demonstration.
+
+SECURITY CONTEXT:
+Apache Commons Collections 3.2.1 is intentionally vulnerable.
+It is included only for controlled security testing.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ct6042</groupId>
+    <artifactId>deserialisation-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- VULNERABILITY: Deliberately includes an outdated dependency
+             affected by unsafe Java deserialisation vulnerabilities. -->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <!--
+        PURPOSE:
+            Provides JUnit 5 for automated security and regression testing.
+        SECURITY CONTEXT:
+            Tests verify that legitimate orders remain supported
+            and unexpected serialised objects are rejected.
+        -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.11.4</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <!-- STEP: Run JUnit 5 tests using Maven's test lifecycle. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.2</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

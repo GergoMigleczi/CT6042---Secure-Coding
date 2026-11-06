@@ -1,0 +1,18 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python generated files
+__pycache__/
+*.pyc
+
+# Operating system files
+.DS_Store
+
+# IDE configuration
+.vscode/
+.idea/
+
+# Environment variables
+.env
