@@ -5,7 +5,13 @@ env/
 
 # Python generated files
 __pycache__/
+.pytest_cache/
+pytest_cache/
 *.pyc
+
+# macOS debug symbols
+*.dSYM/
+*.dsym/
 
 # Operating system files
 .DS_Store
