@@ -5,7 +5,6 @@ CT6042
 │  ├─ attack.py
 │  ├─ invoice_system_mitigated.py
 │  ├─ invoice_system_vulnerable.py
-│  ├─ requirements.txt
 │  └─ test_payment.py
 ├─ Deserialisation
 │  ├─ Attacker
@@ -87,7 +86,6 @@ CT6042
 │  ├─ receive_order_safe
 │  ├─ receive_order_safe.c
 │  ├─ receive_order_safe.plist
-│  ├─ test_dispatch.py
 │  └─ tests
 │     ├─ conftest.py
 │     ├─ test_1_vulnerability.py
