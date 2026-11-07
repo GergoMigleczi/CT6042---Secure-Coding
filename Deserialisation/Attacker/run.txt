@@ -1,4 +1,0 @@
-mvn clean compile        
-
-
-mvn exec:exec -Dexec.executable="java" -Dexec.args="--add-opens java.base/java.util=ALL-UNNAMED -classpath %classpath AttackerReal"
