@@ -30,7 +30,7 @@ def search():
 
     reference = request.args.get("reference", "")
 
-    orders = search_orders(reference)
+    orders = search_orders_safe(reference)
 
     return render_template(
         "search_results.html",

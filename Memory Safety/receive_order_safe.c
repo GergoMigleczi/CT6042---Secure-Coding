@@ -2,11 +2,10 @@
 /*
  * PURPOSE:
  * Receives and stores customer orders in the fictional Dispatch System.
- * Creates dispatch labels for orders marked ready to ship.
  *
  * SECURITY CONTEXT:
- * This initial version checks input lengths before copying data into
- * fixed-size buffers. The vulnerability will be introduced later.
+ * This version checks input lengths before copying data into
+ * fixed-size buffers.
  */
 
 #include <stdio.h>
@@ -64,26 +63,34 @@ int receive_order(const char *order_id, const char *customer_name)
     // STEP: New orders must remain on hold until payment is confirmed.
     strcpy(order.ready_to_ship, "N");
 
-    // STEP: Remove whitespace from the order ID and customer name.
-    remove_whitespace((char *)order_id);
-    remove_whitespace((char *)customer_name);
-    
-    // MITIGATION: Check that each value fits, including its null terminator.
+    // SECURITY: Reject missing inputs before accessing them.
+    if (order_id == NULL || customer_name == NULL) {
+        printf("Error: Missing order details.\n");
+        return 1;
+    }
+
+    // MITIGATION: Check input lengths before copying into fixed-size buffers.
     if (strlen(order_id) >= sizeof(order.order_id) ||
         strlen(customer_name) >= sizeof(order.customer_name)) {
         printf("Error: Order ID or customer name is too long.\n");
         return 1;
     }
 
+    // MITIGATION: Copy inputs into writable local buffers without modifying
+    // the original const strings.
+    strcpy(order.order_id, order_id);
+    strcpy(order.customer_name, customer_name);
+
+    // STEP: Remove leading and trailing whitespace from local copies.
+    remove_whitespace(order.order_id);
+    remove_whitespace(order.customer_name);
+
     // SECURITY: Prevent commas and line breaks from corrupting CSV records.
-    if (strpbrk(order_id, ",\r\n") != NULL ||
-        strpbrk(customer_name, ",\r\n") != NULL) {
+    if (strpbrk(order.order_id, ",\r\n") != NULL ||
+        strpbrk(order.customer_name, ",\r\n") != NULL) {
         printf("Error: Invalid characters in order details.\n");
         return 1;
     }
-
-    strcpy(order.order_id, order_id);
-    strcpy(order.customer_name, customer_name);
 
     // STEP: Append the order to our fictional orders database.
     FILE *file = fopen("orders.csv", "a");

@@ -2,11 +2,11 @@
 /*
  * PURPOSE:
  * Receives and stores customer orders in the fictional Dispatch System.
- * Creates dispatch labels for orders marked ready to ship.
  *
  * SECURITY CONTEXT:
- * This initial version checks input lengths before copying data into
- * fixed-size buffers. The vulnerability will be introduced later.
+ * This version is intentionally vulnerable
+ * because it does not check input lengths before
+ * copying data into fixed-size buffers.
  */
 
 #include <stdio.h>
