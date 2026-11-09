@@ -6,7 +6,7 @@
  * SECURITY CONTEXT:
  * Demonstrates CWE-502: Deserialisation of Untrusted Data.
  * The payload uses existing library classes to trigger unintended
- * method calls when the Warehouse Service reconstructs the object.
+ * method calls when the Invoice Service reconstructs the object.
  *
  * DEPENDENCIES:
  * Apache Commons Collections 3.2.1 and Java 17.
@@ -26,7 +26,7 @@
  * 
  * mvn exec:exec -Dexec.executable="java" -Dexec.args="--add-opens java.base/java.util=ALL-UNNAMED -classpath %classpath AttackerReal"
  *
- * Note that the target Warehouse Service requires NO special flags or privileges 
+ * Note that the target Invoice Service requires NO special flags or privileges 
  * to be exploited; it will parse the completed binary payload automatically.
  */
 

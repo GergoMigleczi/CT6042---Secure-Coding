@@ -1,7 +1,7 @@
 /**
  * PURPOSE:
  * Represents a customer order that can be transferred between
- * the Order Service and Warehouse Service.
+ * the Order Service and Invoice Service.
  *
  * SECURITY CONTEXT:
  * Implements Java's native serialisation mechanism.

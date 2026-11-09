@@ -1,7 +1,7 @@
 """PURPOSE: Receive payment confirmations for fictional invoices.
 
 SECURITY CONTEXT: The Invoice System checks a provider's HMAC-SHA256 signature
-before marking an invoice paid. This version intentionally exposes the key.
+before marking an invoice paid. Key is loaded from a .env file.
 NOTE: Local teaching demonstration; no real payment provider is contacted.
 """
 

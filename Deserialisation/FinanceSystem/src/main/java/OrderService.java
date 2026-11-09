@@ -1,7 +1,7 @@
 /**
  * PURPOSE:
  * Simulates an Order Service that creates a customer order
- * and serialises it for transfer to the Warehouse Service.
+ * and serialises it for transfer to the Invoice Service.
  *
  * SECURITY CONTEXT:
  * Uses Java's native serialisation mechanism to convert an
