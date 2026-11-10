@@ -4,7 +4,7 @@ PURPOSE:
 Provides the web interface for the Order Processing System.
 
 SECURITY CONTEXT:
-Demonstrates an intentionally vulnerable order search endpoint.
+Demonstrates an order search endpoint.
 The application is intended for local testing only.
 """
 
